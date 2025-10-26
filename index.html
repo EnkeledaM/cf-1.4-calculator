@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Calculator - JS Functions (1.4)</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Calculator</h1>
+
+    <!-- Ekrani i rezultatit -->
+    <div class="display" id="display" aria-live="polite">0</div>
+
+    <!-- Butonat -->
+    <div class="keys">
+      <button class="btn btn-ac" data-action="clear">AC</button>
+      <button class="btn" data-action="del">DEL</button>
+      <button class="btn" data-operator="divide">÷</button>
+
+      <button class="btn" data-number="7">7</button>
+      <button class="btn" data-number="8">8</button>
+      <button class="btn" data-number="9">9</button>
+      <button class="btn" data-operator="multiply">×</button>
+
+      <button class="btn" data-number="4">4</button>
+      <button class="btn" data-number="5">5</button>
+      <button class="btn" data-number="6">6</button>
+      <button class="btn" data-operator="subtract">−</button>
+
+      <button class="btn" data-number="1">1</button>
+      <button class="btn" data-number="2">2</button>
+      <button class="btn" data-number="3">3</button>
+      <button class="btn" data-operator="add">+</button>
+
+      <button class="btn" data-number="0">0</button>
+      <button class="btn" data-number=".">.</button>
+      <button class="btn btn-equals" data-action="equals">=</button>
+    </div>
+
+    <p class="hint">
+      Tip: Ky kalkulator demonstron <em>JavaScript functions</em> (add, subtract, multiply, divide)
+      të lidhura me ndërfaqen.
+    </p>
+  </main>
+
+  <script src="./script.js"></script>
+</body>
+</html>
+
