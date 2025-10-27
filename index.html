@@ -3,45 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Calculator - JS Functions (1.4)</title>
+  <title>Calculator — JS Functions (Exercise 1.4)</title>
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <main class="app">
     <h1>Calculator</h1>
 
-    <!-- Ekrani i rezultatit -->
+    <!-- Ekrani i shfaqjes së numrave/rezultatit -->
     <div class="display" id="display" aria-live="polite">0</div>
 
-    <!-- Butonat -->
+    <!-- Butonat (operatorët në kolonën e djathtë) -->
     <div class="keys">
-      <button class="btn btn-ac" data-action="clear">AC</button>
-      <button class="btn" data-action="del">DEL</button>
-      <button class="btn" data-operator="divide">÷</button>
+      <!-- Rreshti i parë (AC i gjerë, DEL, ÷) -->
+      <button class="btn btn-wide btn-ac" data-action="clear" aria-label="All Clear">AC</button>
+      <button class="btn" data-action="del" aria-label="Delete">DEL</button>
+      <button class="btn op" data-operator="divide" aria-label="Divide">÷</button>
 
+      <!-- Rreshti 2 -->
       <button class="btn" data-number="7">7</button>
       <button class="btn" data-number="8">8</button>
       <button class="btn" data-number="9">9</button>
-      <button class="btn" data-operator="multiply">×</button>
+      <button class="btn op" data-operator="multiply" aria-label="Multiply">×</button>
 
+      <!-- Rreshti 3 -->
       <button class="btn" data-number="4">4</button>
       <button class="btn" data-number="5">5</button>
       <button class="btn" data-number="6">6</button>
-      <button class="btn" data-operator="subtract">−</button>
+      <button class="btn op" data-operator="subtract" aria-label="Subtract">−</button>
 
+      <!-- Rreshti 4 -->
       <button class="btn" data-number="1">1</button>
       <button class="btn" data-number="2">2</button>
       <button class="btn" data-number="3">3</button>
-      <button class="btn" data-operator="add">+</button>
+      <button class="btn op" data-operator="add" aria-label="Add">+</button>
 
-      <button class="btn" data-number="0">0</button>
+      <!-- Rreshti 5 (0 i gjerë, pika, =) -->
+      <button class="btn btn-wide" data-number="0">0</button>
       <button class="btn" data-number=".">.</button>
-      <button class="btn btn-equals" data-action="equals">=</button>
+      <button class="btn btn-equals" data-action="equals" aria-label="Equals">=</button>
     </div>
 
     <p class="hint">
-      Tip: Ky kalkulator demonstron <em>JavaScript functions</em> (add, subtract, multiply, divide)
-      të lidhura me ndërfaqen.
+      This calculator demonstrates JavaScript <em>functions</em>
+      (<code>add</code>, <code>subtract</code>, <code>multiply</code>, <code>divide</code>)
+      connected to a simple UI.
     </p>
   </main>
 

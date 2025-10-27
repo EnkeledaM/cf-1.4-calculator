@@ -1,51 +1,45 @@
 /**
- * 1) Funksionet bazë të ushtrimit
+ * Exercise 1.4 — JavaScript Functions
+ * Funksionet bazë të llogaritjes
  */
-function add(a, b) {
-  return a + b;
-}
-function subtract(a, b) {
-  return a - b;
-}
-function multiply(a, b) {
-  return a * b;
-}
-function divide(a, b) {
-  if (b === 0) return '∞'; // ose kthe një error sipas kërkesës
-  return a / b;
-}
+function add(a, b)      { return a + b; }
+function subtract(a, b) { return a - b; }
+function multiply(a, b) { return a * b; }
+function divide(a, b)   { return b === 0 ? 'Error' : a / b; }
 
 /**
- * 2) Lidhja me UI
+ * Lidhja me UI
  */
-const display = document.getElementById('display');
+const displayEl = document.getElementById('display');
 
-let current = '0';       // numri që po shkruan përdoruesi
-let previous = null;     // numri i mëparshëm
-let operator = null;     // 'add' | 'subtract' | 'multiply' | 'divide'
+let current  = '0';   // numri që po shkruhet
+let previous = null;  // numri i ruajtur
+let operator = null;  // 'add' | 'subtract' | 'multiply' | 'divide'
 
 function updateDisplay(value) {
-  display.textContent = value;
+  displayEl.textContent = value;
 }
 
 function inputDigit(d) {
-  if (d === '.' && current.includes('.')) return; // vetëm një pikë dhjetore
-  if (current === '0' && d !== '.') {
-    current = d;
-  } else {
-    current += d;
-  }
+  // vetëm një pikë dhjetore
+  if (d === '.' && current.includes('.')) return;
+
+  // hiq 0-n fillestare
+  if (current === '0' && d !== '.') current = d;
+  else current += d;
+
   updateDisplay(current);
 }
 
 function setOperator(op) {
+  // nëse ka operator aktiv dhe jemi duke shkruar numrin e dytë, bëj llogaritje të ndërmjetme
   if (operator && previous !== null) {
-    compute(); // llogaritje e ndërmjetme nëse përdoruesi vazhdon me operatorë
+    compute();
   } else {
     previous = parseFloat(current);
   }
-  operator = op;
-  current = '0';
+  operator = op;       // ruaj operatorin e ri
+  current  = '0';      // nis numrin e radhës
 }
 
 function clearAll() {
@@ -56,12 +50,14 @@ function clearAll() {
 }
 
 function delLast() {
-  if (current.length <= 1) current = '0';
-  else current = current.slice(0, -1);
+  current = (current.length <= 1) ? '0' : current.slice(0, -1);
   updateDisplay(current);
 }
 
 function compute() {
+  // nëse s’ka operator, thjesht rifresko ekranin
+  if (!operator) { updateDisplay(current); return; }
+
   const a = previous;
   const b = parseFloat(current);
 
@@ -76,13 +72,11 @@ function compute() {
 
   previous = null;
   operator = null;
-  current = String(result);
+  current  = String(result);
   updateDisplay(current);
 }
 
-/**
- * 3) Event listeners
- */
+/* Event listeners për butonat */
 document.querySelectorAll('[data-number]').forEach(btn => {
   btn.addEventListener('click', () => inputDigit(btn.getAttribute('data-number')));
 });
@@ -95,9 +89,7 @@ document.querySelector('[data-action="equals"]').addEventListener('click', compu
 document.querySelector('[data-action="clear"]').addEventListener('click', clearAll);
 document.querySelector('[data-action="del"]').addEventListener('click', delLast);
 
-/**
- * 4) (Opsionale) Mbështetje për tastierë
- */
+/* (Opsionale) Mbështetje për tastierë */
 window.addEventListener('keydown', (e) => {
   if (/\d/.test(e.key)) inputDigit(e.key);
   if (e.key === '.') inputDigit('.');
@@ -109,3 +101,4 @@ window.addEventListener('keydown', (e) => {
     setOperator(map[e.key]);
   }
 });
+
